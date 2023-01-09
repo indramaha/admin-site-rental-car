@@ -1,9 +1,56 @@
 import {FiChevronRight, FiUpload} from "react-icons/fi"
 import Form from 'react-bootstrap/Form';
 import "./AddCar.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { API } from "../cons/endpoint";
 
 const AddCar = () => {
+    const [name, setName] = useState("")
+    const [price, setPrice] = useState("")
+    const [image, setImage] = useState(null)
+    const [category, setCategory] = useState("")
+    const navigate = useNavigate()
+
+    const handleName = (e) => {
+        setName(e.target.value)
+    }
+
+    const handlePrice = (e) => {
+        setPrice(e.target.value)
+    }
+
+    const handleImage = (e) => {
+        setImage(e.target.files[0])
+    }
+
+    const handleCategory = (e) => {
+        setCategory(e.target.value)
+    }
+
+    const handleSaveBtn = () => {
+        const token = localStorage.getItem("token")
+        const config = {
+            headers : {
+                access_token: token
+            },
+        }
+
+        const formData = new FormData()
+        formData.append("name", name)
+        formData.append("price", price)
+        formData.append("image", image)
+        formData.append("category", category)
+
+        axios
+            .post(API.POST_NEW_CAR, formData, config)
+            .then((ress) => {
+                console.log(ress)
+                navigate("/cars")
+            })
+            .catch((err) => console.log(err.message))
+    }
     return (  
         <div className="addcar-section">
             <div>
@@ -36,7 +83,7 @@ const AddCar = () => {
                                 <p>Nama/Tipe Mobil*</p>
                             </div>
                             <div className="addcar-inputsection-form-input-bg">
-                                <input placeholder="Input Nama/Tipe Mobil" type="text" required/>
+                                <input placeholder="Input Nama/Tipe Mobil" type="text" onChange={handleName} required/>
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
@@ -44,7 +91,7 @@ const AddCar = () => {
                                 <p>Harga*</p>
                             </div>
                             <div className="addcar-inputsection-form-input-bg">
-                                <input placeholder="Input Harga Sewa Mobil" required type="number"/>
+                                <input placeholder="Input Harga Sewa Mobil" type="number" onChange={handlePrice} required />
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
@@ -52,7 +99,7 @@ const AddCar = () => {
                                 <p>Foto*</p>
                             </div>
                             <div className="addcar-inputsection-form-input-bg">
-                                <input placeholder="Upload Foto Mobil" type="file"  required/> <FiUpload size={18}/>
+                                <input placeholder="Upload Foto Mobil" type="file" onChange={handleImage}  required/> <FiUpload size={18}/>
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
@@ -60,8 +107,8 @@ const AddCar = () => {
                                 <p>Kategori*</p>
                             </div>
                             <div className="addcar-inputsection-form-select-bg">
-                                <Form.Select>
-                                    <option>Pilih Kategori Mobil</option>
+                                <Form.Select onChange={handleCategory}>
+                                    <option value="">Pilih Kategori Mobil</option>
                                     <option value="small">2 - 4 people</option>
                                     <option value="Medium">4 - 6 people</option>
                                     <option value="large">6 - 8 people</option>
@@ -92,7 +139,7 @@ const AddCar = () => {
                     <button>Cancel</button>
                 </div>
                 <div className="addcar-btn-save">
-                    <button>Save</button>
+                    <button onClick={handleSaveBtn}>Save</button>
                 </div>
             </div>
         </div>

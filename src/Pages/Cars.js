@@ -5,7 +5,7 @@ import axios from "axios";
 import { API } from "../cons/endpoint";
 import { convertToRupiah } from "../utils/convertRupiah";
 import Spinner from 'react-bootstrap/Spinner';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cars = () => {
     const [cars, setCars] = useState([])
@@ -13,6 +13,7 @@ const Cars = () => {
     const [smallCategory, setSmallCategory] = useState(false)
     const [mediumCategory, setMediumCategory] = useState(false)
     const [largeCategory, setLargeCategory] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -117,6 +118,24 @@ const Cars = () => {
         // const today = cars.updatedAt
         // const dateFormat = new Intl.DateTimeFormat('id-ID', {year: 'numeric', month: 'long',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(today)
         // console.log(dateFormat);
+
+    const handleDeleteBtn = (id) => {
+        const token = localStorage.getItem("token")
+        const config = {
+            headers : {
+                access_token: token
+            },
+        }
+
+        axios
+            .delete(`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,config)
+            .then((ress) => {
+                // console.log(ress)
+                navigate("/cars")
+
+            })
+            .catch((err) => console.log(err.message))
+    }
 
     return (  
         <div className="cars-section">
@@ -226,7 +245,7 @@ const Cars = () => {
                                 </div>
                                 <div className="cars-card-btn">
                                     <div>
-                                        <button className="cars-card-btn-delete"><FiTrash2 size={18}/>  Delete</button>
+                                        <button className="cars-card-btn-delete" onClick={() => handleDeleteBtn(items.id)}><FiTrash2 size={18}/>  Delete</button>
                                     </div>
                                     <div>
                                         <button className="cars-card-btn-edit"><FiEdit size={18}/> Edit</button>
