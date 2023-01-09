@@ -1,10 +1,10 @@
-import Routestep from "../Routes/Routestep";
 import "./SideBar.css"
 import {FiHome, FiTruck, FiMenu, FiSearch} from "react-icons/fi"
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import Routestep from "../Routes/Routestep";
 
 const SideBar = () => {
     const [isDboardActive, setIsDboardActive] = useState(true)
@@ -27,6 +27,9 @@ const SideBar = () => {
                     <div className="navsidebar-left-child-title">
                         <p>DASHBOARD</p>
                     </div>
+                    <div className="navsidebar-left-child-desc">
+                        <p>Dashboard</p>
+                    </div>
                 </div>
             )
         } else {
@@ -35,12 +38,14 @@ const SideBar = () => {
                     <div className="navsidebar-left-child-title">
                         <p>CARS</p>
                     </div>
+                    <div className="navsidebar-left-child-desc">
+                        <p>List Car</p>
+                    </div>
                 </div>
             )
         }
     }
 
-    console.log(isDboardActive, isCars)
     return (  
         <div className="navsidebar-section-bg">
             <div className="navsidebar-section">
@@ -105,9 +110,10 @@ const SideBar = () => {
                         <NavSideBarChild />
                         <div className="navsidebar-content-child">
                             <Routestep />
+                            {/* <NavContent /> */}
+                            {/* <Content /> */}
                         </div>
                     </div>
-                   
                 </div>
             </div>
         </div>

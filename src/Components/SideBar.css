@@ -14,7 +14,6 @@ p {
 
 .navsidebar-section {
     width: 1440px;
-    height: 10000px;
     background-color: #F4F5F7;
     display: flex;
 }
@@ -258,6 +257,22 @@ p {
     color: #8A8A8A;
 }
 
+.navsidebar-left-child-desc {
+    width: 100%;
+    background-color: #CFD4ED;
+    margin-top: 18px;
+    padding-left: 24px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.navsidebar-left-child-desc p {
+    font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+}
+
 .navsidebar-content {
     display: flex;
 }
@@ -265,4 +280,6 @@ p {
 .navsidebar-content-child {
     padding-top: 100px;
     padding-left: 24px;
+    padding-right: 24px;
+    width: 100%;
 }
