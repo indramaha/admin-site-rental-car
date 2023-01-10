@@ -248,7 +248,9 @@ const Cars = () => {
                                         <button className="cars-card-btn-delete" onClick={() => handleDeleteBtn(items.id)}><FiTrash2 size={18}/>  Delete</button>
                                     </div>
                                     <div>
-                                        <button className="cars-card-btn-edit"><FiEdit size={18}/> Edit</button>
+                                        <Link to={`/edit-car/${items.id}`}>
+                                            <button className="cars-card-btn-edit"><FiEdit size={18}/> Edit</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

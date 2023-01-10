@@ -2,7 +2,7 @@ h1, h2, h3, h4, h5, h6, a, p, li {
     margin: 0;
 }
 
-.addcar-section {
+.editcar-section {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -10,45 +10,45 @@ h1, h2, h3, h4, h5, h6, a, p, li {
     padding-bottom: 40px;
 }
 
-.addcar-breadcrumb {
+.editcar-breadcrumb {
     display: flex;
     gap: 10px;
 }
 
-.addcar-breadcrumb-route p {
+.editcar-breadcrumb-route p {
     font-size: 12px;
     line-height: 18px;
     font-weight: 700;
     color: black;
 }
 
-.addcar-breadcrumb-route a {
+.editcar-breadcrumb-route a {
     text-decoration: none;
 }
 
-.addcar-breadcrumb-route-active {
+.editcar-breadcrumb-route-active {
     color: #222222;
     font-size: 12px;
     font-weight: 300;
     line-height: 18px;
 }
 
-.addcar-breadcrumb-icon-bg {
+.editcar-breadcrumb-icon-bg {
     display: flex;
     align-items: center;
 }
 
-.addcar-title {
+.editcar-title {
     margin-top: 27px;
 }
 
-.addcar-title h4 {
+.editcar-title h4 {
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
 }
 
-.addcar-inputsection-bg {
+.editcar-inputsection-bg {
     width: 100%;
     background-color: white;
     border-radius: 2px;
@@ -60,30 +60,37 @@ h1, h2, h3, h4, h5, h6, a, p, li {
     padding: 16px;
 }
 
-.addcar-inputsection {
+.editcar-inputsection {
     width: 494px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.addcar-inputsection-form {
+.editcar-inputsection-form {
     display: flex;
     justify-content: space-between;
 }
 
-.addcar-inputsection-form-title {
+.editcar-inputsection-form-title {
     display: flex;
     align-items: center;
 }
 
-.addcar-inputsection-form-title p { 
+.editcar-inputsection-form-title p {
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
 }
 
-.addcar-inputsection-form-input-bg {
+.editcar-inputsection-form-instruc p {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 14px;
+    color: #8A8A8A;
+}
+
+.editcar-inputsection-form-input-bg {
     width: 339px;
     border: 1px solid #D0D0D0;
     display: flex;
@@ -91,27 +98,20 @@ h1, h2, h3, h4, h5, h6, a, p, li {
     padding: 9px 12px;
 }
 
-.addcar-inputsection-form-date {
+.editcar-inputsection-form-date {
     width: 339px;
     display: flex;
     align-items: center;
     padding: 9px 12px;
 }
 
-.addcar-inputsection-form-input-bg input {
+.editcar-inputsection-form-input-bg input {
     width: 100%;
     border: none;
     outline: none;
 }
 
-.addcar-inputsection-form-instruc p {
-    font-weight: 300;
-    font-size: 10px;
-    line-height: 14px;
-    color: #8A8A8A;
-}
-
-.addcar-inputsection-form-select-bg {
+.editcar-inputsection-form-select-bg {
     width: 339px;
     border: 1px solid #D0D0D0;
     display: flex;
@@ -120,41 +120,41 @@ h1, h2, h3, h4, h5, h6, a, p, li {
     padding-bottom: 3px;
 }
 
-.addcar-inputsection-form-select-bg .form-select {
+.editcar-inputsection-form-select-bg .form-select {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
 }
 
-.addcar-inputsection-form-select-bg .form-select:focus {
+.editcar-inputsection-form-select-bg .form-select:focus {
     border: none !important;
 }
 
-.addcar-inputsection-form-input-bg input::placeholder {
+.editcar-inputsection-form-input-bg input::placeholder {
     color: #8A8A8A;
     font-size: 12px;
     font-weight: 300;
     line-height: 18px;
 }
 
-.addcar-btn {
+.editcar-btn {
     display: flex;
     gap: 16px; 
 }
 
-.addcar-btn-cancel button {
+.editcar-btn-cancel button {
     border: 1px solid #0D28A6;
     background-color: white;
     padding: 8px 12px;
     color: #0D28A6;
     font-weight: 700;
-font-size: 14px;
-line-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
 }
 
-.addcar-btn-save button {
-    border: 1px solid #0D28A6;
-    background-color: #0D28A6;
+.editcar-btn-save button {
+    border: 1px solid #CFD4ED;
+    background-color: #CFD4ED;
     padding: 8px 12px;
     color: white;
     font-size: 14px;

@@ -79,7 +79,7 @@ const AddCar = () => {
                 <div className="addcar-inputsection-bg">
                     <div className="addcar-inputsection">
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Nama/Tipe Mobil*</p>
                             </div>
                             <div className="addcar-inputsection-form-input-bg">
@@ -87,7 +87,7 @@ const AddCar = () => {
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Harga*</p>
                             </div>
                             <div className="addcar-inputsection-form-input-bg">
@@ -95,15 +95,20 @@ const AddCar = () => {
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Foto*</p>
                             </div>
-                            <div className="addcar-inputsection-form-input-bg">
-                                <input placeholder="Upload Foto Mobil" type="file" onChange={handleImage}  required/> <FiUpload size={18}/>
+                            <div>
+                                <div className="addcar-inputsection-form-input-bg">
+                                    <input placeholder="Upload Foto Mobil" type="file" onChange={handleImage}  required/> <FiUpload size={18}/>
+                                </div>
+                                <div className="addcar-inputsection-form-instruc">
+                                    <p>File size max. 2MB</p>
+                                </div>
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Kategori*</p>
                             </div>
                             <div className="addcar-inputsection-form-select-bg">
@@ -116,7 +121,7 @@ const AddCar = () => {
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Created at</p>
                             </div>
                             <div className="addcar-inputsection-form-date">
@@ -124,7 +129,7 @@ const AddCar = () => {
                             </div>
                         </div>
                         <div className="addcar-inputsection-form">
-                            <div>
+                            <div className="addcar-inputsection-form-title">
                                 <p>Updated at</p>
                             </div>
                             <div className="addcar-inputsection-form-date">

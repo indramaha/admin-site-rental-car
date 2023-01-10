@@ -17,7 +17,7 @@ const Routestep = () => {
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/cars' element={<Cars />} />
                 <Route path='/add-car' element={<AddCar />} />
-                <Route path='/edit-car' element={<EditCar />} />
+                <Route path='/edit-car/:id' element={<EditCar />} />
             {/* </Route> */}
             <Route path="/admin-login" element={<Login />} />
         </Routes>
