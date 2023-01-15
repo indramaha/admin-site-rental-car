@@ -1,10 +1,13 @@
+import SideBar from "../Components/SideBar";
 
 
 const Dashboard = () => {
-    return (  
-        <div>
-            <h1>Dashboard</h1>
-        </div>
+    return (
+        <SideBar>
+            <div>
+                <h1>Dashboard</h1>
+            </div>
+        </SideBar>
     );
 }
 
