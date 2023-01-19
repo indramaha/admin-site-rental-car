@@ -3,24 +3,10 @@ import {FiHome, FiTruck, FiMenu, FiSearch} from "react-icons/fi"
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 const SideBar = (props) => {
-    const [isDboardActive, setIsDboardActive] = useState(true)
-    const [isCars, setIsCars] = useState(false)
-
-    const handleDashboard = () => {
-        setIsDboardActive(true)
-        setIsCars(false)
-    }
-
-    const handleCars = () => {
-        setIsDboardActive(false)
-        setIsCars(true)
-    }
-
     function NavSideBarChild(){
-        if (isDboardActive === true) {
+        if (props.dashboard === true) {
             return(
                 <div className="navsidebar-left-child">
                     <div className="navsidebar-left-child-title">
@@ -47,6 +33,7 @@ const SideBar = (props) => {
 
     const handleLogOut = () => {
         localStorage.removeItem("token")
+        window.location.reload(false)
     }
 
     return (  
@@ -57,20 +44,20 @@ const SideBar = (props) => {
                         <div>
                             <div className="navsidebar-square"></div>
                         </div>
-                        <NavLink to="/dashboard" onClick={handleDashboard} className={isDboardActive ? "navsidebar-dashboard navsidebar-dashboard-active" : "navsidebar-dashboard"}>
+                        <NavLink to="/dashboard" className={props.dashboard ? "navsidebar-dashboard navsidebar-dashboard-active" : "navsidebar-dashboard"}>
                             <div>
                                 <FiHome size={24} className="navsidebar-dashboard-icon"/>
                             </div>
                             <div>
-                                <p className={isDboardActive ? "navsidebar-dashboard-p-active" : "navsidebar-dashboard-p"}>Dashboard</p>
+                                <p className={props.dashboard ? "navsidebar-dashboard-p-active" : "navsidebar-dashboard-p"}>Dashboard</p>
                             </div>
                         </NavLink>
-                        <NavLink to="/cars" onClick={handleCars} className={isCars ? "navsidebar-cars navsidebar-cars-active" : "navsidebar-cars"}>
+                        <NavLink to="/cars" className={props.car ? "navsidebar-cars navsidebar-cars-active" : "navsidebar-cars"}>
                             <div>
                                 <FiTruck size={24} className="navsidebar-cars-icon"/>
                             </div>
                             <div>
-                                <p className={isCars ? "navsidebar-cars-p-active":"navsidebar-cars-p"}>cars</p>
+                                <p className={props.car ? "navsidebar-cars-p-active":"navsidebar-cars-p"}>cars</p>
                             </div>
                         </NavLink>
                     </div>

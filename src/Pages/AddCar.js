@@ -47,13 +47,13 @@ const AddCar = () => {
         axios
             .post(API.POST_NEW_CAR, formData, config)
             .then((ress) => {
-                // console.log(ress)
+                console.log(ress)
                 navigate("/cars")
             })
             .catch((err) => console.log(err.message))
     }
     return (  
-        <SideBar>
+        <SideBar dashboard={false} car={true}>
             <div className="addcar-section">
                 <div>
                     <div className="addcar-breadcrumb">

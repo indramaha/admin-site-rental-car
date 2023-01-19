@@ -2,7 +2,7 @@ import "./EditCar.css"
 import {FiChevronRight, FiUpload} from "react-icons/fi"
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import SideBar from "../Components/SideBar";
 
@@ -32,7 +32,7 @@ const EditCar = () => {
         setCategory(e.target.value)
     }
 
-    const getCar = () => {
+    const getCar = useCallback(() => {
         const token = localStorage.getItem("token")
         const config = {
             headers : {
@@ -44,14 +44,14 @@ const EditCar = () => {
             .get(`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`, config)
             .then((ress) => {
                 setCar(ress.data)
-                // console.log(ress.data)
+                console.log(ress.data)
             })
             .catch((err) => console.log(err.message))
-    }
+    },[id])
 
     useEffect(() => {
         getCar()
-    },[])
+    },[getCar])
 
     const handleSaveEditBtn = () => {
         const token = localStorage.getItem("token")
@@ -76,7 +76,7 @@ const EditCar = () => {
             .catch((err) => console.log(err.message))
     }
     return (
-        <SideBar>
+        <SideBar dashboard={false} car={true}>
             <div className="editcar-section">
                 <div>
                     <div className="editcar-breadcrumb">

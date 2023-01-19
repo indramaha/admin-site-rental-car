@@ -139,7 +139,7 @@ const Cars = () => {
     }
 
     return (
-        <SideBar>
+        <SideBar dashboard={false} car={true}>
             <div className="cars-section">
                 <div className="cars-breadcrumb">
                     <div>
