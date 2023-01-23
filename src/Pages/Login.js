@@ -11,6 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
     const [isPassword, setIsPassword] = useState(false)
+    const [error, setError] = useState("")
 
     const handlePasswordShow = () => {
         setIsPassword(!isPassword)
@@ -33,11 +34,14 @@ const Login = () => {
         axios
             .post(API.LOGIN, payload)
             .then((ress) => {
-                console.log(ress)
+                // console.log(ress)
                 localStorage.setItem("token", ress.data.access_token)
                 navigate("/")
             })
-            .catch((err) => console.log(err.message))
+            .catch((err) => {
+                // console.log(err.response.data.message)
+                setError(err.response.data.message)
+            })
     }
     return (  
         <div className="login-section-bg">
@@ -51,6 +55,15 @@ const Login = () => {
                         <div className="login-right-title">
                             <h2>Welcome, Admin BCR</h2>
                         </div>
+                        {
+                            error !== "" ? (
+                                <div className="login-error">
+                                    <p>{error}</p>
+                                </div>
+                            ):(
+                                null
+                            )
+                        }
                         <div className="login-right-input-bg">
                             <div className="login-right-titleinput">
                                 <div className="login-right-input-title">
