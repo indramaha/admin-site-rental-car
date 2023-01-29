@@ -1,11 +1,11 @@
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
-import Cars from './Pages/Cars';
 import AddCar from './Pages/AddCar';
-import EditCar from './Pages/EditCar';
 import ProtectedRoute from './hoc/ProtectedRoute';
-import Login from './Pages/Login';
+import LoginPage from './Pages/LoginPage';
+import EditCarPage from './Pages/EditCarPage';
+import CarsPage from './Pages/CarsPage';
 
 function App() {
   return (
@@ -17,11 +17,11 @@ function App() {
                     element={<Navigate to='/dashboard' element={<Dashboard />} />} 
                 />
                 <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/cars' element={<Cars />} />
+                <Route path='/cars' element={<CarsPage />} />
                 <Route path='/add-car' element={<AddCar />} />
-                <Route path='/edit-car/:id' element={<EditCar />} />
+                <Route path='/edit-car/:id' element={<EditCarPage />} />
             </Route>
-            <Route path="/admin-login" element={<Login />} />
+            <Route path="/admin-login" element={<LoginPage />} />
         </Routes>
     </div>
   );

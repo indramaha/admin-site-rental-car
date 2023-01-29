@@ -1,0 +1,65 @@
+.dashboard-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dashboard-breadcrumb-p {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.dashboard-breadcrumb-p-active {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.dashboard-chart-title-bg {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 58px;
+}
+
+.dashboard-chart-title-icon {
+    width: 4px;
+    height: 24px;
+    background: #0D28A6;
+}
+
+.dashboard-chart-title p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dashboard-mounth-bg {
+    margin-top: 18px;
+    margin-bottom: 45px;
+}
+
+.dashboard-mounth-select-bg {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.dashboard-mounth-title p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.dashboard-mounth-btn button {
+    padding: 8px 12px;
+    background-color: #0D28A6;
+    color: white;
+    border: 1px solid #0D28A6;
+    border-radius: 0px 2px 2px 0px;
+    -webkit-border-radius: 0px 2px 2px 0px;
+    -moz-border-radius: 0px 2px 2px 0px;
+    -ms-border-radius: 0px 2px 2px 0px;
+    -o-border-radius: 0px 2px 2px 0px;
+}

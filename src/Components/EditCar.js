@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import SideBar from "../Components/SideBar";
 
 const EditCar = () => {
     const [name, setName] = useState("")
@@ -76,52 +75,51 @@ const EditCar = () => {
             .catch((err) => console.log(err.message))
     }
     return (
-        <SideBar dashboard={false} car={true}>
-            <div className="editcar-section">
-                <div>
-                    <div className="editcar-breadcrumb">
-                        <div className="editcar-breadcrumb-route">
-                            <p>Cars</p>
-                        </div>
-                        <div className="editcar-breadcrumb-icon-bg">
-                            <FiChevronRight size={16}/>
-                        </div>
-                        <div className="editcar-breadcrumb-route">
-                            <Link to="/cars" >
-                                <p className="editcar-breadcrumb-route-link-p">List Car</p>
-                            </Link>
-                        </div>
-                        <div className="editcar-breadcrumb-icon-bg">
-                            <FiChevronRight size={16}/>
-                        </div>
-                        <div className="editcar-breadcrumb-route-active">
-                            <p>Edit Car</p>
-                        </div>
+        <div className="editcar-section">
+            <div>
+                <div className="editcar-breadcrumb">
+                    <div className="editcar-breadcrumb-route">
+                        <p>Cars</p>
                     </div>
-                    <div className="editcar-title">
-                        <h4>Edit Car</h4>
+                    <div className="editcar-breadcrumb-icon-bg">
+                        <FiChevronRight size={16}/>
                     </div>
-                    <div className="editcar-inputsection-bg">
-                        <div className="editcar-inputsection">
-                            <div className="editcar-inputsection-form">
-                                <div className="editcar-inputsection-form-title">
-                                    <p>Nama/Tipe Mobil*</p>
-                                </div>
-                                <div className="editcar-inputsection-form-input-bg">
-                                    <input placeholder={car.name} defaultValue={car.name} type="text" onChange={handleName} required/>
-                                </div>
+                    <div className="editcar-breadcrumb-route">
+                        <Link to="/cars" >
+                            <p className="editcar-breadcrumb-route-link-p">List Car</p>
+                        </Link>
+                    </div>
+                    <div className="editcar-breadcrumb-icon-bg">
+                        <FiChevronRight size={16}/>
+                    </div>
+                    <div className="editcar-breadcrumb-route-active">
+                        <p>Edit Car</p>
+                    </div>
+                </div>
+                <div className="editcar-title">
+                    <h4>Edit Car</h4>
+                </div>
+                <div className="editcar-inputsection-bg">
+                    <div className="editcar-inputsection">
+                        <div className="editcar-inputsection-form">
+                            <div className="editcar-inputsection-form-title">
+                                <p>Nama/Tipe Mobil*</p>
                             </div>
-                            <div className="editcar-inputsection-form">
-                                <div className="editcar-inputsection-form-title">
-                                    <p>Harga*</p>
-                                </div>
-                                <div className="editcar-inputsection-form-input-bg">
-                                    <input placeholder={car.price} defaultValue={car.price} type="number" onChange={handlePrice} required />
-                                </div>
+                            <div className="editcar-inputsection-form-input-bg">
+                                <input placeholder={car.name} defaultValue={car.name} type="text" onChange={handleName} required/>
                             </div>
-                            <div className="editcar-inputsection-form">
-                                <div className="editcar-inputsection-form-title">
-                                    <p>Foto*</p>
+                        </div>
+                        <div className="editcar-inputsection-form">
+                            <div className="editcar-inputsection-form-title">
+                                <p>Harga*</p>
+                            </div>
+                            <div className="editcar-inputsection-form-input-bg">
+                                <input placeholder={car.price} defaultValue={car.price} type="number" onChange={handlePrice} required />
+                            </div>
+                        </div>
+                        <div className="editcar-inputsection-form">
+                            <div className="editcar-inputsection-form-title">
+                                <p>Foto*</p>
                                 </div>
                                 <div>
                                     <div className="editcar-inputsection-form-input-bg">
@@ -173,7 +171,6 @@ const EditCar = () => {
                     </div>
                 </div>
             </div>
-        </SideBar>
     );
 }
  
