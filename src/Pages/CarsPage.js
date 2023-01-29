@@ -3,9 +3,9 @@ import SideBar from "../Components/SideBar";
 
 const CarsPage = () => {
     return (
-        <div>
+        <SideBar dashboard={false} car={true}>
             <Cars />
-        </div>
+        </SideBar>
     );
 }
 

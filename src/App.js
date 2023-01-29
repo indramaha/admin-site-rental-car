@@ -1,11 +1,11 @@
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
-import AddCar from './Pages/AddCar';
 import ProtectedRoute from './hoc/ProtectedRoute';
 import LoginPage from './Pages/LoginPage';
 import EditCarPage from './Pages/EditCarPage';
 import CarsPage from './Pages/CarsPage';
+import AddCarPage from './Pages/AddCarPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
                 />
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/cars' element={<CarsPage />} />
-                <Route path='/add-car' element={<AddCar />} />
+                <Route path='/add-car' element={<AddCarPage />} />
                 <Route path='/edit-car/:id' element={<EditCarPage />} />
             </Route>
             <Route path="/admin-login" element={<LoginPage />} />
