@@ -6,6 +6,8 @@ import { API } from "../cons/endpoint";
 import { convertToRupiah } from "../utils/convertRupiah";
 import Spinner from 'react-bootstrap/Spinner';
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { handleAllCAr, handleSmallBtn } from "../redux/action/carAction";
 
 const Cars = () => {
     const [cars, setCars] = useState([])
@@ -14,65 +16,24 @@ const Cars = () => {
     const [mediumCategory, setMediumCategory] = useState(false)
     const [largeCategory, setLargeCategory] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const state = useSelector(rootReducers => rootReducers)
+    console.log(state)
 
     useEffect(() => {
-        const token = localStorage.getItem("token")
-        const config = {
-            headers: {
-                access_token: token
-            },
-        }
-        axios
-            .get(API.ALL_CARS, config)
-            .then((ress) => {
-                // console.log(ress.data.cars)
-                setCars(ress.data.cars)
-                setAllCategory(true)
-                setSmallCategory(false)
-                setMediumCategory(false)
-                setLargeCategory(false)
-            })
-            .catch((err) => console.log(err.message))
+        onHandleCars()
     },[])
 
-    const handleAllCategory = () => {
-        const token = localStorage.getItem("token")
-        const config ={
-            headers : {
-                access_token : token
-            },
-        }
+    const onHandleCars = () => {
+        dispatch(handleAllCAr())
+    }
 
-        axios
-            .get("https://bootcamp-rent-cars.herokuapp.com/admin/v2/car?category=&page=1&pageSize=10", config)
-            .then((ress) => {
-                setCars(ress.data.cars)
-                setAllCategory(true)
-                setSmallCategory(false)
-                setMediumCategory(false)
-                setLargeCategory(false)
-            })
-            .catch((err) => console.log(err.message))
+    const handleAllCategory = () => {
+        dispatch(handleAllCAr())
     }
 
     const handleSmallCategory = () => {
-        const token = localStorage.getItem("token")
-        const config ={
-            headers : {
-                access_token : token
-            },
-        }
-
-        axios
-            .get("https://bootcamp-rent-cars.herokuapp.com/admin/v2/car?category=small&page=1&pageSize=10", config)
-            .then((ress) => {
-                setCars(ress.data.cars)
-                setAllCategory(false)
-                setSmallCategory(true)
-                setMediumCategory(false)
-                setLargeCategory(false)
-            })
-            .catch((err) => console.log(err.message))
+        dispatch(handleSmallBtn())
     }
 
     const handleMediumCategory = () => {
@@ -162,21 +123,21 @@ const Cars = () => {
             </div>
             <div className="cars-category-btn">
                 <div>
-                    <button onClick={handleAllCategory} className={allCategory ? "cars-category-btn-button-active":"cars-category-btn-button"}>All</button>
+                    <button onClick={handleAllCategory} className={state.getCars.allFilter ? "cars-category-btn-button-active":"cars-category-btn-button"}>All</button>
                 </div>
                 <div>
-                    <button onClick={handleSmallCategory} className={smallCategory ? "cars-category-btn-button-active":"cars-category-btn-button"}>2 - 4 people</button>
+                    <button onClick={handleSmallCategory} className={state.getCars.smallFilter ? "cars-category-btn-button-active":"cars-category-btn-button"}>2 - 4 people</button>
                 </div>
                 <div>
-                    <button onClick={handleMediumCategory} className={mediumCategory ? "cars-category-btn-button-active":"cars-category-btn-button"}>4 - 6 people</button>
+                    <button onClick={handleMediumCategory} className={state.getCars.mediumFillter ? "cars-category-btn-button-active":"cars-category-btn-button"}>4 - 6 people</button>
                 </div>
                 <div>
-                    <button onClick={handleLargeCategory} className={largeCategory ? "cars-category-btn-button-active":"cars-category-btn-button"}>6 - 8 people</button>
+                    <button onClick={handleLargeCategory} className={state.getCars.largeFilter ? "cars-category-btn-button-active":"cars-category-btn-button"}>6 - 8 people</button>
                 </div>
             </div>
             <div className="cars-card-bg">
                 {
-                    cars.length ? cars.map((items, i) => {
+                    state.getCars.cars.length ? state.getCars.cars.map((items, i) => {
                         return(
                             <div key={i} className="cars-card">
                                 <div className="cars-card-image">
@@ -240,7 +201,7 @@ const Cars = () => {
                                         <FiClock size={20}/>
                                     </div>
                                     <div className="cars-card-updated-desc">
-                                        <p>Update at {items.updatedAt}</p>
+                                        <p>Updated at {items.updatedAt}</p>
                                     </div>
                                 </div>
                                 <div className="cars-card-btn">

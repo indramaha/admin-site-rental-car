@@ -33,7 +33,6 @@ const SideBar = (props) => {
 
     const handleLogOut = () => {
         localStorage.removeItem("token")
-        window.location.reload(false)
     }
 
     return (  
