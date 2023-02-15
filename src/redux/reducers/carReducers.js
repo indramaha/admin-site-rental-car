@@ -4,6 +4,7 @@ const carState = {
     smallFilter: false,
     mediumFillter: false,
     largeFilter: false,
+    deleteMessage: ""
 }
 
 export const carReducers = (state = carState, action) => {
@@ -17,14 +18,19 @@ export const carReducers = (state = carState, action) => {
                 mediumFillter: action.payload.mediumFillter,
                 largeFilter: action.payload.largeFilter,
             }
-        case "SMALL_FILTER":
-            return{
+        case "FILTER_CATEGORY":
+            return {
                 ...carState,
                 cars: action.payload.cars,
                 allFilter: action.payload.allFilter,
                 smallFilter: action.payload.smallFilter,
                 mediumFillter: action.payload.mediumFillter,
                 largeFilter: action.payload.largeFilter,
+            }
+        case "DELETE_CAR":
+            return {
+                ...carState,
+                deleteMessage: action.payload.message,
             }
         default:
             return state

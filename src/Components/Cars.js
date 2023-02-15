@@ -1,20 +1,13 @@
 import {FiChevronRight, FiPlus, FiUsers, FiClock, FiTrash2, FiEdit} from "react-icons/fi"
 import "./Cars.css"
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { API } from "../cons/endpoint";
+import { useEffect } from "react";
 import { convertToRupiah } from "../utils/convertRupiah";
 import Spinner from 'react-bootstrap/Spinner';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { handleAllCAr, handleSmallBtn } from "../redux/action/carAction";
+import { handleAllCAr, handleDelete, handleLargeBtn, handleMediumBtn, handleSmallBtn } from "../redux/action/carAction";
 
 const Cars = () => {
-    const [cars, setCars] = useState([])
-    const [allCategory, setAllCategory] = useState(false)
-    const [smallCategory, setSmallCategory] = useState(false)
-    const [mediumCategory, setMediumCategory] = useState(false)
-    const [largeCategory, setLargeCategory] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const state = useSelector(rootReducers => rootReducers)
@@ -23,6 +16,10 @@ const Cars = () => {
     useEffect(() => {
         onHandleCars()
     },[])
+
+    useEffect(() => {
+        onHandleCars()
+    },[state.getCars.deleteMessage])
 
     const onHandleCars = () => {
         dispatch(handleAllCAr())
@@ -37,65 +34,15 @@ const Cars = () => {
     }
 
     const handleMediumCategory = () => {
-        const token = localStorage.getItem("token")
-        const config ={
-            headers : {
-                access_token : token
-            },
-        }
-
-        axios
-            .get("https://bootcamp-rent-cars.herokuapp.com/admin/v2/car?category=Medium&page=1&pageSize=10", config)
-            .then((ress) => {
-                setCars(ress.data.cars)
-                setAllCategory(false)
-                setSmallCategory(false)
-                setMediumCategory(true)
-                setLargeCategory(false)
-            })
-            .catch((err) => console.log(err.message))
+        dispatch(handleMediumBtn())
     }
 
     const handleLargeCategory = () => {
-        const token = localStorage.getItem("token")
-        const config ={
-            headers : {
-                access_token : token
-            },
-        }
-
-        axios
-            .get("https://bootcamp-rent-cars.herokuapp.com/admin/v2/car?category=large&page=1&pageSize=10", config)
-            .then((ress) => {
-                setCars(ress.data.cars)
-                setAllCategory(false)
-                setSmallCategory(false)
-                setMediumCategory(false)
-                setLargeCategory(true)
-            })
-            .catch((err) => console.log(err.message))
+        dispatch(handleLargeBtn())
     }
 
-        // const today = cars.updatedAt
-        // const dateFormat = new Intl.DateTimeFormat('id-ID', {year: 'numeric', month: 'long',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(today)
-        // console.log(dateFormat);
-
     const handleDeleteBtn = (id) => {
-        const token = localStorage.getItem("token")
-        const config = {
-            headers : {
-                access_token: token
-            },
-        }
-
-        axios
-            .delete(`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,config)
-            .then((ress) => {
-                // console.log(ress)
-                navigate("/cars")
-
-            })
-            .catch((err) => console.log(err.message))
+        dispatch(handleDelete(id))
     }
 
     return (
